@@ -1,22 +1,29 @@
-import React, {  useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
+
+
+
+
 // import { Editor } from '@tinymce/tinymce-react';
 // import { CKEditor } from '@ckeditor/ckeditor5-react';
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-const editorConfiguration = {
-    toolbar: [ 'bold', 'italic' ]
-};
+// const editorConfiguration = {
+//     toolbar: [ 'bold', 'italic' ]
+// };
+
 const App = () => {
-    const[body, SetBody] = useState('')
- 
+const [textarea, settxtarea] = useState("")
+ useEffect(() =>{
+    settxtarea(localStorage.getItem('kkk'))
+ })
     return (
       <>
           <input type="file" id="ck_imageUploader" accept="image/gif, image/jpeg, image/png" style={{display: "none"}}  uploadimageurl="../public/ImageUpload.js" />
 
       <h2>Using CKEditor&nbsp;5 from online builder in React</h2>
-      <textarea id="editor_en" textmode="MultiLine"></textarea>
-
+      <textarea id='editor_en'  textmode="MultiLine" value={textarea}></textarea>
+  <button id="btn">clikcme</button>
       {/* <CKEditor
                     editor={ ClassicEditor }
                     data="<p>Hello from CKEditor&nbsp;5!</p>"
@@ -40,7 +47,7 @@ const App = () => {
     }
  
   export default App;
-
+/*value={textarea} onChange={handleChange } */
   /*
     <Editor
         textareaName='Body'

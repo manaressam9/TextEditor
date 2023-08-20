@@ -1,4 +1,16 @@
-﻿function InitializeCkeEditor(elementName)
+﻿var editor = CKEDITOR.replace( 'editor_en' );
+var data;
+// The "change" event is fired whenever a change is made in the editor.
+editor.on( 'change', function( evt ) {
+    // getData() returns CKEditor's HTML content.
+    data = evt.editor.getData()
+    console.log(  evt.editor.getData());
+});
+$('[id$=btn]').on('click', function(){
+    localStorage.setItem('kkk', data)
+    console.log("bff" + data)
+})
+function InitializeCkeEditor(elementName)
 {
     if ($('[id$=' + elementName + ']').length > 0) {
         var EditorID = $('[id$=' + elementName + ']')[0].id;
